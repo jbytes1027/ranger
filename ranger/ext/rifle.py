@@ -329,7 +329,7 @@ class Rifle(object):  # pylint: disable=too-many-instance-attributes
         if not self._mimetype:
             try:
                 with Popen23(
-                    ["file", "--mime-type", "-Lb", fname], stdout=PIPE, stderr=PIPE
+                    ["file", "-e", "text", "--mime-type", "-Lb", fname], stdout=PIPE, stderr=PIPE
                 ) as process:
                     mimetype, _ = process.communicate()
                 self._mimetype = mimetype.decode(ENCODING).strip()
